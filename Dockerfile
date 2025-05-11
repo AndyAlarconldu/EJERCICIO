@@ -6,3 +6,6 @@ COPY app.py /app.py
 
 # Define el comando para ejecutar el script
 CMD ["python", "/app.py"]
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
