@@ -1,8 +1,17 @@
-# Usa una imagen base de Python
 FROM python:3.9-slim
 
-# Copia el archivo app.py en el contenedor
-COPY app.py /app.py
+# Establece el directorio de trabajo
+WORKDIR /app
 
-# Define el comando para ejecutar el script
-CMD ["python", "/app.py"]
+# Copia requirements.txt e instala las dependencias
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el resto de los archivos del proyecto
+COPY . .
+
+# Expón el puerto que usa Flask
+EXPOSE 5000
+
+# Ejecuta la app
+CMD ["python", "app.py"]
