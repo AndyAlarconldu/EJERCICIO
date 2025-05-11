@@ -1,17 +1,17 @@
 FROM python:3.9-slim
 
-# Establece el directorio de trabajo
+# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copia requirements.txt e instala las dependencias
+# Copiar requirements.txt e instalar dependencias
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia el resto de los archivos del proyecto
+# Copiar el resto de los archivos
 COPY . .
 
-# Expón el puerto que usa Flask
+# Exponer el puerto 5000 para Flask
 EXPOSE 5000
 
-# Ejecuta la app
+# Ejecutar la aplicación
 CMD ["python", "app.py"]
